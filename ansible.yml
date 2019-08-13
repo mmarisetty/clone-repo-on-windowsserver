@@ -1,0 +1,22 @@
+- name: hosts
+  hosts: all
+  become: yes
+  tasks:
+  - name: create a directory
+    win_file:
+      path: C:\testing
+      state: directory
+  - name: clone a private repository into windows server
+    win_git:
+      repo: http://username:password@gitlabserver/automation/common/ansible/ansible.git
+      dest: C:\testing\
+      branch: master
+      update: yes
+      recursive: yes
+      replace_dest: yes
+      accept_hostkey: yes
+      force: yes
+      ignore_errors: yes
+      register: find_output
+  - debug:
+      var: find_output.stdout_lines
