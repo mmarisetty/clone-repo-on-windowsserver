@@ -1,0 +1,12 @@
+[hosts]
+windowsserver.aws.com
+[hosts:vars]
+ansible_connection=winrm
+ansible_user=windowsserverusername
+ansible_password=windowsserverpassword
+ansible_port=5985
+ansible_winrm_server_cert_validation=ignore
+ansible_winrm_transport=ntlm
+validate_certs=false
+ansible_winrm_scheme=http
+ansible_become=false
